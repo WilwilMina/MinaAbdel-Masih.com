@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MinaAbdel-Masih.com</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/c30cb7580c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <div id="header">
+    <!-- subtle AI particle background (canvas) -->
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="container">
+      <nav>
+        <img src="images/logo-ma-inside.svg" class="logo" alt="Logo" />
+        <ul>
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- HERO -->
+      <div class="header-text">
+        <!-- new AI badges row -->
+        <div class="hero-chips">
+          <span class="chip"><i class="fa-solid fa-brain"></i> AI Focus</span>
+          <span class="chip"><i class="fa-solid fa-robot"></i> ML/LLMs</span>
+          <span class="chip"><i class="fa-solid fa-shield-halved"></i> Cybersecurity</span>
+          <span class="chip"><i class="fa-solid fa-code"></i> Full-Stack</span>
+        </div>
+
+        <p>Hi 👋 My name is</p>
+        <h1 class="glow-name">Mina Abdel-Masih.</h1>
+        <h2>I'm a <span class="typing"></span></h2>
+
+        <p class="sub-intro">
+          I’m an aspiring Software Engineer passionate about full-stack development, cybersecurity, and AI.
+          I love solving problems, building impactful projects, and bringing ideas to life through code.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#services" class="btn btn2 btn-primary">Check Out My Work!</a>
+          <a href="Mina Abdel-Masih.pdf" target="_blank" class="btn btn-outline">
+            <i class="fa-solid fa-file-arrow-down"></i> Resume
+          </a>
+        </div>
+
+        <!-- quick socials -->
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/kerolstobia/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/WilwilMina" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Me -->
+  <div id="about">
+    <div class="container row">
+      <div class="about-col-2">
+        <h1 class="sub-title"><span style="color:#3399FF;"></span> About Me</h1>
+        <p class="editcolor">
+          Hi 👋 My name is Mina Abdel-Masih and I’m a Computer Science student at North Carolina State University.<br><br>
+          I’m passionate about building projects in Java, web development, and cybersecurity.
+          Some of my projects include a Wordle clone, a PPM image processor, and a scheduling application.
+          These experiences taught me problem-solving, collaboration, and how to bring ideas to life through code.<br><br>
+          Outside of programming, I enjoy drawing, creating art, and exploring new technologies that spark creativity.
+        </p>
+
+        <h3 style="margin-top:30px; color:#fff;">Technologies I’ve worked with:</h3>
+        <ul class="tech-list">
+          <li><i class="fa-brands fa-java"></i> Java</li>
+          <li><i class="fa-brands fa-html5"></i> HTML</li>
+          <li><i class="fa-brands fa-css3-alt"></i> CSS</li>
+          <li><i class="fa-brands fa-js"></i> JavaScript</li>
+          <li><i class="fa-brands fa-python"></i> Python</li>
+          <li><i class="fa-solid fa-c"></i> C</li>
+        </ul>
+      </div>
+      <div class="about-col-1">
+        <img src="images/minarouma@gmail.com-8c673407/minarouma@gmail.com-1.jpg" alt="Mina" />
+      </div>
+    </div>
+  </div>
+
+  <!-- My Projects -->
+  <div id="services">
+    <div class="container">
+      <div class="projects-intro">
+        <h1 class="projects-heading">
+          <span class="heading-main">Some of my <span class="ai-text">Projects</span></span>
+        </h1>
+        <p class="projects-subtitle">
+          A curated selection of my work — blending code, creativity, and problem-solving into real-world solutions.
+        </p>
+        <div class="heading-underline"></div>
+      </div>
+
+      <!-- Project 1 -->
+      <section class="project">
+        <div class="project-media">
+          <img src="images/Wordle.png" alt="Wordle project screenshot" />
+        </div>
+        <div class="project-content">
+          <span class="project-kicker">Featured Project</span>
+          <h2 class="project-title">Wordle Project</h2>
+          <p class="project-desc">
+            A <strong>Java</strong>-based Wordle clone with input validation, letter coloring logic,
+            and attempt tracking. Built with clean OOP design and unit tests.
+          </p>
+          <ul class="stack-tags">
+            <li class="tag">Java</li>
+            <li class="tag">OOP</li>
+            <li class="tag">JUnit</li>
+          </ul>
+          <div class="project-links">
+            <a class="icon-btn" href="#" aria-label="GitHub repository"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project 2 -->
+      <section class="project project--reverse">
+        <div class="project-media">
+          <img src="images/Portfolio.png" alt="Personal portfolio website screenshot" />
+        </div>
+        <div class="project-content">
+          <span class="project-kicker">Featured Project</span>
+          <h2 class="project-title">Personal Portfolio</h2>
+          <p class="project-desc">
+            This website! Built with responsive HTML/CSS + vanilla JS, subtle motion,
+            and an AI-style header. Sections include About, Projects, and Contact.
+          </p>
+          <ul class="stack-tags">
+            <li class="tag">HTML</li>
+            <li class="tag">CSS</li>
+            <li class="tag">JavaScript</li>
+          </ul>
+          <div class="project-links">
+            <a class="icon-btn" href="#" aria-label="GitHub repository"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project 3 -->
+      <section class="project">
+        <div class="project-media">
+          <img src="images/PPM.png" alt="PPM image processor screenshot" />
+        </div>
+        <div class="project-content">
+          <span class="project-kicker">Featured Project</span>
+          <h2 class="project-title">Image File (PPM Processor)</h2>
+          <p class="project-desc">
+            A command-line PPM image tool supporting grayscale, invert, and contrast
+            operations. Emphasis on file I/O, robust parsing, and error handling.
+          </p>
+          <ul class="stack-tags">
+            <li class="tag">Java</li>
+            <li class="tag">CLI</li>
+            <li class="tag">File I/O</li>
+          </ul>
+          <div class="project-links">
+            <a class="icon-btn" href="#" aria-label="GitHub repository"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact">
+    <div class="container row">
+      <div class="contact-left">
+        <h1 class="sub-title">Contact Me</h1>
+        <p><i class="fa-solid fa-paper-plane"></i> minarouma@gmail.com</p>
+        <p><i class="fa-solid fa-square-phone"></i> 984-298-9201</p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/kerolstobia/"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/minawilliams17/"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://github.com/WilwilMina"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <a href="Images/Mina_Abdel-Masih_Resume.pdf" download class="btn btn2">Download Resume</a>
+      </div>
+      <div class="contact-right">
+        <form>
+          <input type="text" name="Name" placeholder="Your Name" required />
+          <input type="email" name="Email" placeholder="Your Email" required />
+          <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+          <button type="submit" class="btn btn2">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>Copyright © Mina. Made with <i class="fas fa-heart"></i> by Easy Tutorials</p>
+    </div>
+  </div>
+
+  <!-- Floating Chat Widget -->
+  <div id="chat-fab">💬</div>
+  <div id="chat-window">
+    <div id="chat-header">
+      <span>Ask Mina</span>
+      <button id="chat-close" aria-label="Close chat">×</button>
+    </div>
+    <div id="chat-body">
+      <div class="chat-message bot">
+        👋 Hi! I'm Mina’s assistant. Pick a question below to learn more.
+      </div>
+      <div class="chat-options"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // (Slider removed) — guard so no errors occur if controls aren't present
+    (function(){
+      const slides = document.querySelectorAll(".slide");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      if (!slides.length || !prevBtn || !nextBtn) return;
+      let currentSlide = 0;
+      function updateButtons() {
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === slides.length - 1;
+      }
+      function showSlide(index) {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = index;
+        slides[currentSlide].classList.add("active");
+        updateButtons();
+      }
+      nextBtn.addEventListener("click", () => {
+        if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
+      });
+      prevBtn.addEventListener("click", () => {
+        if (currentSlide > 0) showSlide(currentSlide - 1);
+      });
+      updateButtons();
+    })();
+
+    // Typing Animation (hero)
+    const roles = ["Developer", "Designer", "Problem Solver", "Creator"];
+    const TYPE_MS = 110, DELETE_MS = 55, PAUSE_AFTER_TYPE = 3000, PAUSE_AFTER_DELETE = 400;
+    (function initTyping(){
+      const el = document.querySelector(".typing");
+      if (!el) return;
+      let wordIndex = 0, charIndex = 0, state = "typing";
+      function tick() {
+        const word = roles[wordIndex];
+        if (state === "typing") {
+          charIndex++; el.textContent = word.slice(0, charIndex);
+          if (charIndex === word.length) return setTimeout(()=>{state="deleting"; tick();}, PAUSE_AFTER_TYPE);
+          return setTimeout(tick, TYPE_MS);
+        }
+        charIndex--; el.textContent = word.slice(0, charIndex);
+        if (charIndex === 0) { wordIndex = (wordIndex + 1) % roles.length; state = "typing"; return setTimeout(tick, PAUSE_AFTER_DELETE); }
+        setTimeout(tick, DELETE_MS);
+      }
+      tick();
+    })();
+
+    // AI particle background
+    (function aiParticles(){
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const canvas = document.getElementById("hero-canvas");
+      if (!canvas || prefersReduced) return;
+      const ctx = canvas.getContext("2d");
+      let w, h, dpr = Math.max(1, window.devicePixelRatio || 1);
+      const particles = [];
+      const MAX = 60;
+      function resize() {
+        canvas.width = canvas.clientWidth * dpr;
+        canvas.height = canvas.clientHeight * dpr;
+        w = canvas.width; h = canvas.height;
+      }
+      function rand(min, max){ return Math.random() * (max - min) + min; }
+      function makeParticle(){ return { x: rand(0,w), y: rand(0,h), vx: rand(-0.15,0.15), vy: rand(-0.15,0.15), r: rand(1.2,2.2)*dpr }; }
+      function init(){ particles.length = 0; for (let i=0;i<MAX;i++) particles.push(makeParticle()); }
+      let mouse = {x: -9999, y: -9999};
+      canvas.addEventListener("mousemove", e=>{
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX - rect.left) * dpr;
+        mouse.y = (e.clientY - rect.top) * dpr;
+      });
+      canvas.addEventListener("mouseleave", ()=>{ mouse.x = mouse.y = -9999; });
+      function step(){
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = "rgba(51,153,255,0.6)";
+        for (const p of particles){
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+          const dx = mouse.x - p.x, dy = mouse.y - p.y, dist2 = dx*dx + dy*dy;
+          if (dist2 < 12000) { p.vx += dx*0.00002; p.vy += dy*0.00002; }
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+        }
+        ctx.lineWidth = 1 * dpr;
+        for (let i=0;i<particles.length;i++){
+          for (let j=i+1;j<particles.length;j++){
+            const a = particles[i], b = particles[j];
+            const dx = a.x - b.x, dy = a.y - b.y, dist2 = dx*dx + dy*dy;
+            if (dist2 < 7000) {
+              const alpha = 1 - dist2/7000;
+              ctx.strokeStyle = `rgba(51,153,255,${0.12*alpha})`;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      function onResize(){ resize(); init(); }
+      window.addEventListener("resize", onResize);
+      resize(); init(); step();
+    })();
+
+    // Chat widget logic (Walgreens style, preset Q&A + typing animation)
+    const chatFab = document.getElementById("chat-fab");
+    const chatWindow = document.getElementById("chat-window");
+    const chatClose = document.getElementById("chat-close");
+    const chatBody = document.getElementById("chat-body");
+
+    chatFab.addEventListener("click", () => {
+      chatWindow.style.display = "flex";
+      chatFab.style.display = "none";
+      renderOptions();
+    });
+    chatClose.addEventListener("click", () => {
+      chatWindow.style.display = "none";
+      chatFab.style.display = "flex";
+    });
+
+    const responses = {
+      who: "Mina Abdel-Masih is a Computer Science student at NCSU, passionate about full-stack development, cybersecurity, and AI.",
+      projects: "Mina has worked on a Wordle clone, a personal portfolio website, and a PPM image processor.",
+      contact: "You can reach Mina at minarouma@gmail.com or connect via LinkedIn.",
+    };
+
+    function renderOptions() {
+      const old = chatBody.querySelector(".chat-options");
+      if (old) old.remove();
+
+      const optionsDiv = document.createElement("div");
+      optionsDiv.className = "chat-options";
+
+      const questions = [
+        { key: "who", text: "Who is Mina?" },
+        { key: "projects", text: "What projects has Mina worked on?" },
+        { key: "contact", text: "How to contact Mina?" },
+      ];
+
+      questions.forEach(q => {
+        const btn = document.createElement("button");
+        btn.className = "chat-btn";
+        btn.textContent = q.text;
+        btn.dataset.question = q.key;
+        btn.addEventListener("click", () => handleQuestion(q.key, q.text));
+        optionsDiv.appendChild(btn);
+      });
+
+      chatBody.appendChild(optionsDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function handleQuestion(key, text) {
+      const oldOptions = chatBody.querySelector(".chat-options");
+      if (oldOptions) oldOptions.remove();
+
+      const userMsg = document.createElement("div");
+      userMsg.className = "chat-message user";
+      userMsg.textContent = text;
+      chatBody.appendChild(userMsg);
+
+      const typingMsg = document.createElement("div");
+typingMsg.className = "chat-message bot typing-dots";
+typingMsg.innerHTML = "<span class='dot'></span><span class='dot'></span><span class='dot'></span>";
+
+      chatBody.appendChild(typingMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      setTimeout(() => {
+        typingMsg.remove();
+        const botMsg = document.createElement("div");
+        botMsg.className = "chat-message bot";
+        botMsg.textContent = responses[key] || "Sorry, I don’t have an answer yet.";
+        chatBody.appendChild(botMsg);
+        renderOptions();
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
