@@ -29,7 +29,7 @@
         <!-- new AI badges row -->
         <div class="hero-chips">
           <span class="chip"><i class="fa-solid fa-brain"></i> AI Focus</span>
-          <span class="chip"><i class="fa-solid fa-robot"></i> ML/LLMs</span>
+          <span class="chip"><i class="fa-solid fa-robot"></i> SWE</span>
           <span class="chip"><i class="fa-solid fa-shield-halved"></i> Cybersecurity</span>
           <span class="chip"><i class="fa-solid fa-code"></i> Full-Stack</span>
         </div>
@@ -65,11 +65,13 @@
       <div class="about-col-2">
         <h1 class="sub-title"><span style="color:#3399FF;"></span> About Me</h1>
         <p class="editcolor">
-          Hi 👋 My name is Mina Abdel-Masih and I’m a Computer Science student at North Carolina State University.<br><br>
-          I’m passionate about building projects in Java, web development, and cybersecurity.
-          Some of my projects include a Wordle clone, a PPM image processor, and a scheduling application.
-          These experiences taught me problem-solving, collaboration, and how to bring ideas to life through code.<br><br>
-          Outside of programming, I enjoy drawing, creating art, and exploring new technologies that spark creativity.
+          Hi 👋 My name is Mina Abdel-Masih and I’m a Computer Science student at North Carolina State University with aspirations in software engineering and artificial intelligence/machine learning. My journey with programming began when I was younger, experimenting with the Scratch programming language as if it were a game. That early experience showed me how logic and creativity could be combined to bring ideas to life, and it sparked the passion that drives me today.<br><br>
+
+Since then, I’ve developed projects such as a Connect Four game, a Wordle clone, a PPM image processor, and a personal portfolio website — each one strengthening my foundation in problem-solving, design, and software engineering. At NC State, I’ve continued to build my skills in Java, backend development, and web technologies while exploring AI and machine learning. I also stay involved outside the classroom by participating in HackPack and the AI Club, where I collaborate with peers and learn from real-world applications of emerging technologies.<br><br>
+
+I am motivated by the goal of making a difference through technology — whether by building efficient systems, designing intuitive applications, or contributing to innovations that impact people’s lives. My strengths lie in creativity, adaptability, and persistence, which help me approach challenges with unique perspectives and deliver meaningful results. Beyond academics, I enjoy playing soccer, working out, listening to music, and spending time with my family in Egypt, which keeps me grounded and inspired.
+
+
         </p>
 
         <h3 style="margin-top:30px; color:#fff;">Technologies I’ve worked with:</h3>
@@ -173,32 +175,56 @@
   </div>
 
   <!-- Contact -->
-  <div id="contact">
-    <div class="container row">
-      <div class="contact-left">
-        <h1 class="sub-title">Contact Me</h1>
+<!-- Contact -->
+<div id="contact">
+  <div class="container row contact-wrapper">
+    <div class="contact-left">
+      <h1 class="sub-title contact-title">Let’s Connect 🚀</h1>
+      <p class="contact-intro">
+        Whether you’re a recruiter, collaborator, or just want to say hi — feel free to reach out!
+      </p>
+      <div class="contact-details">
         <p><i class="fa-solid fa-paper-plane"></i> minarouma@gmail.com</p>
         <p><i class="fa-solid fa-square-phone"></i> 984-298-9201</p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/kerolstobia/"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://www.instagram.com/minawilliams17/"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://github.com/WilwilMina"><i class="fa-brands fa-github"></i></a>
-        </div>
-        <a href="Images/Mina_Abdel-Masih_Resume.pdf" download class="btn btn2">Download Resume</a>
       </div>
-      <div class="contact-right">
-        <form>
-          <input type="text" name="Name" placeholder="Your Name" required />
-          <input type="email" name="Email" placeholder="Your Email" required />
-          <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-          <button type="submit" class="btn btn2">Submit</button>
-        </form>
+      <div class="social-icons contact-socials">
+        <a href="https://www.linkedin.com/in/kerolstobia/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/minawilliams17/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/WilwilMina" target="_blank"><i class="fa-brands fa-github"></i></a>
       </div>
+      <a href="Images/Mina_Abdel-Masih_Resume.pdf" download class="btn btn2 pulse-btn">
+        <i class="fa-solid fa-download"></i> Download Resume
+      </a>
     </div>
-    <div class="copyright">
-      <p>Copyright © Mina. Made with <i class="fas fa-heart"></i> by Easy Tutorials</p>
+
+    <div class="contact-right">
+      <form class="contact-form" name="submit-to-google-sheet">
+        <input type="text" name="Name" placeholder="Your Name" required />
+        <input type="email" name="Email" placeholder="Your Email" required />
+        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+        <button type="submit" class="btn btn2 submit-animated">Send Message ✉️</button>
+      </form>
+      <!-- ✅ Success Overlay (AI neon) -->
+<div id="success-overlay" class="success-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="success-card">
+    <svg class="success-check" viewBox="0 0 120 120" aria-hidden="true">
+      <circle class="ring" cx="60" cy="60" r="52"></circle>
+      <polyline class="check" points="34,64 52,80 86,44"></polyline>
+    </svg>
+
+    <h3 class="success-title">Message sent!</h3>
+    <p class="success-desc">Thanks for reaching out — I’ll get back to you soon.</p>
+
+    <button id="success-close" class="btn btn2">Close</button>
+    <div class="burst" aria-hidden="true"></div>
+  </div>
+</div>
+
+      <span id="msg"></span>
     </div>
   </div>
+</div>
+
 
   <!-- Floating Chat Widget -->
   <div id="chat-fab">💬</div>
@@ -217,7 +243,6 @@
 
   <!-- Scripts -->
   <script>
-    // (Slider removed) — guard so no errors occur if controls aren't present
     (function(){
       const slides = document.querySelectorAll(".slide");
       const prevBtn = document.getElementById("prev");
@@ -264,7 +289,6 @@
       tick();
     })();
 
-    // AI particle background
     (function aiParticles(){
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const canvas = document.getElementById("hero-canvas");
@@ -335,9 +359,9 @@
     });
 
     const responses = {
-      who: "Mina Abdel-Masih is a Computer Science student at NCSU, passionate about full-stack development, cybersecurity, and AI.",
-      projects: "Mina has worked on a Wordle clone, a personal portfolio website, and a PPM image processor.",
-      contact: "You can reach Mina at minarouma@gmail.com or connect via LinkedIn.",
+      who: "Mina Abdel-Masih is a Computer Science student at North Carolina State University with a strong foundation in software engineering, full-stack development, and AI. He is passionate about building innovative, user-focused technologies and exploring the intersection of artificial intelligence and secure systems. Beyond technical expertise, Mina is committed to continuous learning, problem-solving, and developing solutions that have real-world impact.",
+      projects: "Mina has developed a range of technical projects, including a Connect Four game, a Wordle clone, a personal portfolio website, and a PPM image processor. These projects demonstrate skills in software development, problem-solving, and full-stack implementation. Mina continues to expand his expertise in computer science, actively refining his technical abilities while building innovative and user-focused applications.",
+      contact: "Mina is seeking software engineering and technology-focused internship opportunities for Summer 2026. He is particularly interested in roles that involve software development, full-stack engineering, and innovative applications of AI and cybersecurity. Mina is eager to contribute to impactful projects, collaborate with diverse teams, and further develop his technical expertise while delivering meaningful results.",
     };
 
     function renderOptions() {
@@ -350,7 +374,7 @@
       const questions = [
         { key: "who", text: "Who is Mina?" },
         { key: "projects", text: "What projects has Mina worked on?" },
-        { key: "contact", text: "How to contact Mina?" },
+        { key: "contact", text: "What kind of roles and opportunities is Mina seeking?" },
       ];
 
       questions.forEach(q => {
@@ -392,5 +416,23 @@ typingMsg.innerHTML = "<span class='dot'></span><span class='dot'></span><span c
       }, 1200);
     }
   </script>
+  <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwek2sckAfbY1mPk9X_K2Upc53cqIP84kW11nxAwUiqjQXoxwU2dDmU4ru1HiPDpDdL/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML = "Message sent successfully"
+        setTimeout(function(){
+          msg.innerHTML = ""
+        }, 2000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 </html>
