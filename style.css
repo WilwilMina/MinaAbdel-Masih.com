@@ -162,7 +162,7 @@ nav ul li a:hover::after { width: 100%; }
 .about-col-2 { flex-basis: 55%; }
 
 .sub-title { font-size: 40px; font-weight: 600; color: #ffffff; margin-bottom: 20px; }
-.editcolor { color: #ffffff; }
+.editcolor { color: #ffffff; font-size: 18px; font-family: sans-serif;}
 
 .tech-list {
   list-style: none; margin: 20px 0; padding: 0; display: flex; flex-wrap: wrap;
@@ -413,38 +413,175 @@ form .btn2 { padding: 14px 60px; font-size: 18px; margin-top: 20px; cursor: poin
 }
 
 /* ---------- Floating Chat Widget (Walgreens style) ---------- */
+/* ---------- Floating Chat Widget (Advanced AI Style) ---------- */
 #chat-fab {
-  position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
-  background: #3399FF; color: #fff; font-size: 28px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 10000; transition: transform 0.2s ease;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #4a9dff, #7bb6ff);
+  color: #fff;
+  font-size: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 20px rgba(74,157,255,0.4);
+  z-index: 10000;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
-#chat-fab:hover { transform: scale(1.05); }
+#chat-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 28px rgba(74,157,255,0.55);
+}
+
+#chat-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 9998;
+}
 
 #chat-window {
-  position: fixed; bottom: 20px; right: 20px; width: 320px; max-height: 420px;
-  background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  display: none; flex-direction: column; overflow: hidden; font-family: 'Poppins', sans-serif; z-index: 10001;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 340px;
+  max-height: 500px;
+  background: rgba(18, 22, 30, 0.95);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(123,182,255,0.35);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  z-index: 10001;
+  animation: popIn 0.3s ease;
 }
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 #chat-header {
-  background: #3399FF; color: #fff; padding: 12px; display: flex; justify-content: space-between; align-items: center; font-weight: 600;
+  background: linear-gradient(90deg, #4a9dff, #7bb6ff);
+  color: #fff;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
-#chat-header button { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; }
-#chat-body { padding: 12px; overflow-y: auto; flex: 1; font-size: 14px; }
+#chat-header .title-wrap { display: flex; flex-direction: column; }
+#chat-header .online {
+  font-size: 11px;
+  color: #eaf6ff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#chat-header .online .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #0f0;
+  box-shadow: 0 0 8px rgba(0,255,0,0.7);
+}
 
+#chat-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+#chat-header button:hover { transform: scale(1.2); }
+
+#chat-body {
+  padding: 14px;
+  overflow-y: auto;
+  flex: 1;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Messages */
 .chat-message {
-  padding: 10px 14px; margin: 8px 0; border-radius: 10px; max-width: 80%; line-height: 1.4;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  line-height: 1.5;
+  word-wrap: break-word;
+  animation: fadeIn 0.25s ease;
 }
-.chat-message.bot { background: #171a22; color: #cfe6ff; border: 1px solid rgba(123, 182, 255, 0, 28); align-self: flex-start; }
-.chat-message.user { background: #3399FF; color: #fff; align-self: flex-end; }
+.chat-message.bot {
+  background: rgba(26, 32, 44, 0.9);
+  border: 1px solid rgba(123,182,255,0.3);
+  color: #dce9ff;
+  align-self: flex-start;
+}
+.chat-message.user {
+  background: linear-gradient(135deg, #4a9dff, #7bb6ff);
+  color: #fff;
+  align-self: flex-end;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* Options (rendered at bottom after each answer) */
-.chat-options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-.chat-btn {
-  background: #262626; color: #fff; border: 1px solid #3399FF; border-radius: 6px;
-  padding: 8px; cursor: pointer; font-size: 13px; transition: background 0.3s; text-align: left;
+/* Options (re-render after each answer) */
+.chat-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.chat-btn:hover { background: #3399FF; }
+.chat-btn {
+  background: #1e242f;
+  color: #cfe6ff;
+  border: 1px solid rgba(123,182,255,0.4);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.3s, transform 0.2s;
+  text-align: left;
+}
+.chat-btn:hover {
+  background: rgba(74,157,255,0.2);
+  transform: translateX(3px);
+}
+
+/* Typing dots */
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.typing-dots .dot {
+  width: 7px;
+  height: 7px;
+  background: #7bb6ff;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite;
+}
+.typing-dots .dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots .dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%,80%,100% { transform: scale(0.6); opacity: 0.6; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
 
 /* ===================== Chat Widget Typing Dots ===================== */
 .typing-dots {

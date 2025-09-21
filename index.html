@@ -45,14 +45,14 @@
 
         <div class="hero-ctas">
           <a href="#services" class="btn btn2 btn-primary">Check Out My Work!</a>
-          <a href="Mina Abdel-Masih.pdf" target="_blank" class="btn btn-outline">
+          <a href="images/Mina_Abdel-Masih_Resume.pdf" target="_blank" class="btn btn-outline">
             <i class="fa-solid fa-file-arrow-down"></i> Resume
           </a>
         </div>
 
         <!-- quick socials -->
         <div class="hero-socials">
-          <a href="https://www.linkedin.com/in/kerolstobia/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.linkedin.com/in/mina-abdel-masih-93a443217" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
           <a href="https://github.com/WilwilMina" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         </div>
       </div>
@@ -188,7 +188,7 @@ I am motivated by the goal of making a difference through technology — whether
         <p><i class="fa-solid fa-square-phone"></i> 984-298-9201</p>
       </div>
       <div class="social-icons contact-socials">
-        <a href="https://www.linkedin.com/in/kerolstobia/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/mina-abdel-masih-93a443217" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://www.instagram.com/minawilliams17/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://github.com/WilwilMina" target="_blank"><i class="fa-brands fa-github"></i></a>
       </div>
@@ -204,42 +204,39 @@ I am motivated by the goal of making a difference through technology — whether
         <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
         <button type="submit" class="btn btn2 submit-animated">Send Message ✉️</button>
       </form>
-      <!-- ✅ Success Overlay (AI neon) -->
-<div id="success-overlay" class="success-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="success-card">
-    <svg class="success-check" viewBox="0 0 120 120" aria-hidden="true">
-      <circle class="ring" cx="60" cy="60" r="52"></circle>
-      <polyline class="check" points="34,64 52,80 86,44"></polyline>
-    </svg>
 
-    <h3 class="success-title">Message sent!</h3>
-    <p class="success-desc">Thanks for reaching out — I’ll get back to you soon.</p>
-
-    <button id="success-close" class="btn btn2">Close</button>
-    <div class="burst" aria-hidden="true"></div>
-  </div>
-</div>
 
       <span id="msg"></span>
     </div>
   </div>
 </div>
 
-
   <!-- Floating Chat Widget -->
-  <div id="chat-fab">💬</div>
-  <div id="chat-window">
-    <div id="chat-header">
-      <span>Ask Mina</span>
-      <button id="chat-close" aria-label="Close chat">×</button>
+<div id="chat-backdrop" aria-hidden="true"></div>
+
+<div id="chat-fab" aria-label="Open chat" title="Ask Mina">💬</div>
+
+<div id="chat-window" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <div id="chat-header">
+    <div class="title-wrap">
+      <div id="chat-title">Mina’s Assistant</div>
+      <div class="online"><span class="dot"></span> online</div>
     </div>
-    <div id="chat-body">
-      <div class="chat-message bot">
-        👋 Hi! I'm Mina’s assistant. Pick a question below to learn more.
-      </div>
-      <div class="chat-options"></div>
+    <div class="chat-actions">
+      <button id="chat-min" class="icon-btn" aria-label="Minimize"><i class="fa-solid fa-minus"></i></button>
+      <button id="chat-close" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
     </div>
   </div>
+
+  <div id="chat-body">
+    <div class="chat-message bot intro">
+      <i class="fa-solid fa-wand-magic-sparkles"></i> Hi! I’m Mina’s assistant.  
+      <br/>Ask me a question below 👇
+    </div>
+    <div class="chat-options"></div>
+  </div>
+</div>
+
 
   <!-- Scripts -->
   <script>
@@ -342,79 +339,96 @@ I am motivated by the goal of making a difference through technology — whether
       resize(); init(); step();
     })();
 
-    // Chat widget logic (Walgreens style, preset Q&A + typing animation)
-    const chatFab = document.getElementById("chat-fab");
-    const chatWindow = document.getElementById("chat-window");
-    const chatClose = document.getElementById("chat-close");
-    const chatBody = document.getElementById("chat-body");
+    (() => {
+      const fab = document.getElementById('chat-fab');
+      const win = document.getElementById('chat-window');
+      const closeBtn = document.getElementById('chat-close');
+      const minBtn = document.getElementById('chat-min');
+      const body = document.getElementById('chat-body');
+      const backdrop = document.getElementById('chat-backdrop');
 
-    chatFab.addEventListener("click", () => {
-      chatWindow.style.display = "flex";
-      chatFab.style.display = "none";
-      renderOptions();
-    });
-    chatClose.addEventListener("click", () => {
-      chatWindow.style.display = "none";
-      chatFab.style.display = "flex";
-    });
+      const responses = {
+        who: "Mina Abdel-Masih is a Computer Science student at North Carolina State University with a strong foundation in software engineering, full-stack development, and AI. He is passionate about building innovative, user-focused technologies and exploring the intersection of artificial intelligence and secure systems. Beyond technical expertise, Mina is committed to continuous learning, problem-solving, and developing solutions that have real-world impact.",
+        projects: "Mina has developed a range of technical projects, including a Connect Four game, a Wordle clone, a personal portfolio website, and a PPM image processor. These projects demonstrate skills in software development, problem-solving, and full-stack implementation. Mina continues to expand his expertise in computer science, actively refining his technical abilities while building innovative and user-focused applications.",
+        contact: "Mina is seeking software engineering and technology-focused internship opportunities for Summer 2026. He is particularly interested in roles that involve software development, full-stack engineering, and innovative applications of AI and cybersecurity. Mina is eager to contribute to impactful projects, collaborate with diverse teams, and further develop his technical expertise while delivering meaningful results.",
+        website: "Yes and no 😅. Mina built this site using his knowledge of HTML, CSS, and JavaScript, but he also leaned on AI to make it stronger — improving the design, adding animations, and polishing the experience. He believes AI is a powerful tool that helps developers move faster and push projects further."
 
-    const responses = {
-      who: "Mina Abdel-Masih is a Computer Science student at North Carolina State University with a strong foundation in software engineering, full-stack development, and AI. He is passionate about building innovative, user-focused technologies and exploring the intersection of artificial intelligence and secure systems. Beyond technical expertise, Mina is committed to continuous learning, problem-solving, and developing solutions that have real-world impact.",
-      projects: "Mina has developed a range of technical projects, including a Connect Four game, a Wordle clone, a personal portfolio website, and a PPM image processor. These projects demonstrate skills in software development, problem-solving, and full-stack implementation. Mina continues to expand his expertise in computer science, actively refining his technical abilities while building innovative and user-focused applications.",
-      contact: "Mina is seeking software engineering and technology-focused internship opportunities for Summer 2026. He is particularly interested in roles that involve software development, full-stack engineering, and innovative applications of AI and cybersecurity. Mina is eager to contribute to impactful projects, collaborate with diverse teams, and further develop his technical expertise while delivering meaningful results.",
-    };
-
-    function renderOptions() {
-      const old = chatBody.querySelector(".chat-options");
-      if (old) old.remove();
-
-      const optionsDiv = document.createElement("div");
-      optionsDiv.className = "chat-options";
+      };
 
       const questions = [
-        { key: "who", text: "Who is Mina?" },
-        { key: "projects", text: "What projects has Mina worked on?" },
-        { key: "contact", text: "What kind of roles and opportunities is Mina seeking?" },
+        { key: "who", text: "Who is Mina?", icon: "fa-user" },
+        { key: "projects", text: "What projects has Mina worked on?", icon: "fa-diagram-project" },
+        { key: "contact", text: "What opportunities is Mina seeking?", icon: "fa-briefcase" },
+        { key: "website", text: "Did Mina code this website himself?", icon: "fa-briefcase" },
       ];
 
-      questions.forEach(q => {
-        const btn = document.createElement("button");
-        btn.className = "chat-btn";
-        btn.textContent = q.text;
-        btn.dataset.question = q.key;
-        btn.addEventListener("click", () => handleQuestion(q.key, q.text));
-        optionsDiv.appendChild(btn);
+      function openChat() {
+        backdrop.style.display = 'block';
+        win.style.display = 'flex';
+        fab.style.display = 'none';
+        renderOptions();
+      }
+      function closeChat() {
+        backdrop.style.display = 'none';
+        win.style.display = 'none';
+        fab.style.display = 'flex';
+      }
+      fab.addEventListener('click', openChat);
+      closeBtn.addEventListener('click', closeChat);
+      backdrop.addEventListener('click', closeChat);
+      minBtn.addEventListener('click', () => {
+        win.style.display = 'none';
+        fab.style.display = 'flex';
       });
 
-      chatBody.appendChild(optionsDiv);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
+      function renderOptions() {
+        const old = body.querySelector('.chat-options');
+        if (old) old.remove();
+        const options = document.createElement('div');
+        options.className = 'chat-options';
+        questions.forEach(q => {
+          const btn = document.createElement('button');
+          btn.className = 'chat-btn';
+          btn.innerHTML = `<i class="fa-solid ${q.icon}"></i> ${q.text}`;
+          btn.addEventListener('click', () => handleQuestion(q.key, q.text));
+          options.appendChild(btn);
+        });
+        body.appendChild(options);
+        scrollToBottom();
+      }
 
-    function handleQuestion(key, text) {
-      const oldOptions = chatBody.querySelector(".chat-options");
-      if (oldOptions) oldOptions.remove();
+      function addMessage(text, who = 'bot') {
+        const msg = document.createElement('div');
+        msg.className = `chat-message ${who}`;
+        msg.textContent = text;
+        body.appendChild(msg);
+        scrollToBottom();
+      }
 
-      const userMsg = document.createElement("div");
-      userMsg.className = "chat-message user";
-      userMsg.textContent = text;
-      chatBody.appendChild(userMsg);
+      function addTyping() {
+        const wrap = document.createElement('div');
+        wrap.className = 'chat-message bot typing-dots';
+        wrap.innerHTML = "<span class='dot'></span><span class='dot'></span><span class='dot'></span>";
+        body.appendChild(wrap);
+        scrollToBottom();
+        return wrap;
+      }
 
-      const typingMsg = document.createElement("div");
-typingMsg.className = "chat-message bot typing-dots";
-typingMsg.innerHTML = "<span class='dot'></span><span class='dot'></span><span class='dot'></span>";
+      function handleQuestion(key, text) {
+        const opts = body.querySelector('.chat-options'); if (opts) opts.remove();
+        addMessage(text, 'user');
+        const typing = addTyping();
+        setTimeout(() => {
+          typing.remove();
+          addMessage(responses[key] || "I don’t have an answer for that yet 🤔", 'bot');
+          renderOptions();
+        }, 1000);
+      }
 
-      chatBody.appendChild(typingMsg);
-      chatBody.scrollTop = chatBody.scrollHeight;
-
-      setTimeout(() => {
-        typingMsg.remove();
-        const botMsg = document.createElement("div");
-        botMsg.className = "chat-message bot";
-        botMsg.textContent = responses[key] || "Sorry, I don’t have an answer yet.";
-        chatBody.appendChild(botMsg);
-        renderOptions();
-      }, 1200);
-    }
+      function scrollToBottom() {
+        requestAnimationFrame(() => { body.scrollTop = body.scrollHeight; });
+      }
+    })();
   </script>
   <script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbwek2sckAfbY1mPk9X_K2Upc53cqIP84kW11nxAwUiqjQXoxwU2dDmU4ru1HiPDpDdL/exec'
@@ -422,14 +436,14 @@ typingMsg.innerHTML = "<span class='dot'></span><span class='dot'></span><span c
   const msg = document.getElementById("msg")
 
   form.addEventListener('submit', e => {
-    e.preventDefault()
+    e.preventDefault();
+    msg.innerHTML = "Sending... ⏳";
+
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => {
-        msg.innerHTML = "Message sent successfully"
-        setTimeout(function(){
-          msg.innerHTML = ""
-        }, 2000)
-        form.reset()
+        msg.innerHTML = "Message sent successfully ✅";
+        setTimeout(() => { msg.innerHTML = ""; }, 2000);
+        form.reset();
       })
       .catch(error => console.error('Error!', error.message))
   })
