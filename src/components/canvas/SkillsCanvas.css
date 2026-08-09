@@ -1,0 +1,30 @@
+/* ─── SkillsCanvas ────────────────────────────────────────────
+   Wrapper for the shared WebGL canvas plus the drei <Html> labels
+   that sit under each ball. Height is set inline from the row count.
+   ───────────────────────────────────────────────────────────── */
+
+.skills-canvas {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 720px;
+  touch-action: pan-y;   /* let the page scroll on touch, don't trap it */
+}
+
+.skills-canvas canvas {
+  outline: none;
+}
+
+/* Rendered by drei's <Html>, so it lives in the DOM, not the 3D scene. */
+.ball-label {
+  display: block;
+  white-space: nowrap;
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  user-select: none;
+  pointer-events: none;
+  transform: translateY(-2px);
+}

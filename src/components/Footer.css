@@ -1,0 +1,129 @@
+/* ─── Footer ──────────────────────────────────────────────────
+   Two-tier footer that closes out the page with a frosted band.
+   Top: brand (left) + nav/email/socials (right). Divider. Bottom bar.
+   A back-to-top button sits centered at the top edge.
+   ───────────────────────────────────────────────────────────── */
+
+#footer {
+  position: relative;
+  background: rgba(26, 23, 48, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  position: relative;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2rem;
+}
+
+/* ─── Back-to-top ───────────────────────────────────────────── */
+.back-to-top {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #0a0918;
+  background: var(--accent);
+  box-shadow: 0 8px 24px rgba(45, 226, 182, 0.3);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.back-to-top:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 12px 30px rgba(45, 226, 182, 0.4);
+}
+
+/* ─── Top tier ──────────────────────────────────────────────── */
+/* Bottom-aligned so the email lands on the tagline's line rather than
+   floating between the name and the tagline. The brand block's height is
+   set by the 52px logo, and the tagline is its last line — so flex-end
+   puts the two on the same baseline and closes the gap above the divider. */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  height: 52px;
+  width: auto;
+  object-fit: contain;   /* natural ratio — see Nav.css .logo */
+}
+
+.footer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 400px;   /* keeps the tagline on one line, shortening the block */
+}
+
+/* ─── Email ─────────────────────────────────────────────────── */
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: color var(--ease);
+}
+
+.footer-email:hover {
+  color: var(--accent);
+}
+
+/* ─── Divider + bottom bar ──────────────────────────────────── */
+.footer-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0 1rem;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.footer-built {
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .footer-bottom {
+    justify-content: flex-start;
+  }
+}

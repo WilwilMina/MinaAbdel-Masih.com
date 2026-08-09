@@ -1,0 +1,134 @@
+/* ─── Hero ────────────────────────────────────────────────────
+   Full-viewport, centered. Particle canvas sits behind the content.
+   The name uses a teal → violet gradient (replacing the reference
+   site's orange/gold). Content fades up on mount.
+   ───────────────────────────────────────────────────────────── */
+
+#hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 76px;
+  /* Soft, soothing glow behind the name — cool violet-white, not green */
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 35%,
+    rgba(124, 111, 247, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 1000px;
+  padding: 5rem 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Entrance: fade + rise on mount */
+  animation: heroFadeUp 0.8s ease both;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Chips ─────────────────────────────────────────────────── */
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.chip i {
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+
+/* ─── Name ──────────────────────────────────────────────────── */
+.glow-name {
+  font-size: clamp(2.5rem, 6.5vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  /* Keep the full name on one line on desktop; wraps on small phones */
+  white-space: nowrap;
+  /* Teal → violet gradient text */
+  background: linear-gradient(120deg, var(--accent) 0%, #b7aef8 55%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ─── Role line ─────────────────────────────────────────────── */
+.hero-role {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Sub-intro ─────────────────────────────────────────────── */
+.sub-intro {
+  font-size: 1.125rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 620px;
+  margin-bottom: 2.5rem;
+}
+
+/* ─── CTAs ──────────────────────────────────────────────────── */
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* ─── Socials ───────────────────────────────────────────────── */
+.hero-socials {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.hero-socials a {
+  font-size: 1.5rem;
+  color: var(--muted);
+  transition: color var(--ease), transform var(--ease);
+}
+
+.hero-socials a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ─── Mobile: allow the name to wrap so it never overflows ───── */
+@media (max-width: 600px) {
+  .glow-name {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,176 @@
+/* ─── Nav ─────────────────────────────────────────────────────
+   Fixed to the top. Transparent until .scrolled is added (frosted glass).
+   Desktop links get a teal underline that slides in on hover.
+   Hamburger (<900px) morphs into an X when .open.
+   ───────────────────────────────────────────────────────────── */
+
+#main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-bottom: 1px solid transparent;
+  transition: background var(--ease), backdrop-filter var(--ease), border-color var(--ease);
+}
+
+/* Frosted glass — toggled via React state on scroll */
+#main-nav.scrolled {
+  background: rgba(16, 14, 29, 0.85); /* --bg at 85% */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--border);
+}
+
+.nav-inner {
+  max-width: 100%;
+  margin: 0;
+  padding: 0 2rem;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Transparent-background monogram — kept at its natural ratio so the mark
+   never clips. The art carries wide transparent padding of its own. */
+.logo {
+  height: 56px;   /* a touch bigger; fits inside the 76px bar */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ─── Desktop links ─────────────────────────────────────────── */
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-links li a {
+  position: relative;
+  display: inline-block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.4rem 0.25rem;
+  transition: color var(--ease);
+}
+
+/* Teal underline that slides in from the left on hover */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ease);
+}
+
+.nav-links li a:hover {
+  color: var(--text);
+}
+
+.nav-links li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Active section (scroll-spy): teal label + persistent underline */
+.nav-links li a.active {
+  color: var(--accent);
+}
+
+.nav-links li a.active::after {
+  transform: scaleX(1);
+}
+
+/* ─── Hamburger ─────────────────────────────────────────────── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform var(--ease), opacity var(--ease);
+}
+
+/* Morph the three lines into an X when open */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Mobile dropdown ───────────────────────────────────────── */
+.nav-menu {
+  display: none;
+  background: rgba(16, 14, 29, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 6% 1.5rem;
+}
+
+.nav-menu.open {
+  display: block;
+}
+
+.nav-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-menu ul li a {
+  display: block;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  transition: color var(--ease), background var(--ease);
+}
+
+.nav-menu ul li a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-menu ul li a.active {
+  color: var(--accent);
+}
+
+/* ─── Mobile breakpoint ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}

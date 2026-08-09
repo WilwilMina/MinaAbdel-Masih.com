@@ -1,0 +1,12 @@
+/* TypingText — the typed word + blinking cursor (CSS border-right). */
+.typing {
+  color: var(--accent);
+  border-right: 2px solid var(--accent);
+  padding-right: 4px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { border-color: var(--accent); }
+  50%      { border-color: transparent; }
+}

@@ -1,0 +1,215 @@
+/* ─── Projects ────────────────────────────────────────────────
+   Section intro + Tier 1 featured alternating rows.
+   Tier 2 card styles live in ProjectCard.css.
+   ───────────────────────────────────────────────────────────── */
+
+/* Background comes from the .section-frosted utility (App.css). */
+
+/* ─── Intro ─────────────────────────────────────────────────── */
+.projects-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+/* .accent-text moved to App.css — shared with the About headline. */
+
+.projects-subtitle {
+  max-width: 560px;
+  margin: 0.5rem auto 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* ─── Tier 1: featured rows ─────────────────────────────────────
+   Each row is a self-contained panel. The circuit-trace texture is an
+   inline SVG data URI rather than an image file — no extra request, and
+   it stays crisp at any DPI. Deliberately low-contrast: it should read
+   as texture behind the content, never compete with the copy.
+
+   No `overflow: hidden` here on purpose — border-radius already clips
+   the background, and hiding overflow would clip the violet glow on
+   .project-media into a hard edge. */
+.project {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  padding: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background-color: rgba(20, 17, 38, 0.55);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='rgba(160,150,255,0.11)' stroke-width='1'%3E%3Cpath d='M0 30h50l20 20h50l20-20h40'/%3E%3Cpath d='M0 120h36l20-20h40'/%3E%3Cpath d='M180 84h-40l-22 22v44'/%3E%3Cpath d='M30 180v-40l18-18'/%3E%3Cpath d='M110 180v-32l24-24h46'/%3E%3Cpath d='M74 0v36'/%3E%3Cpath d='M150 0v28l14 14'/%3E%3C/g%3E%3Cg fill='rgba(160,150,255,0.2)'%3E%3Ccircle cx='50' cy='30' r='2.5'/%3E%3Ccircle cx='120' cy='50' r='2.5'/%3E%3Ccircle cx='96' cy='100' r='2.5'/%3E%3Ccircle cx='140' cy='84' r='2.5'/%3E%3Ccircle cx='118' cy='150' r='2.5'/%3E%3Ccircle cx='74' cy='36' r='2.5'/%3E%3Ccircle cx='48' cy='122' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Flip the column order on alternating rows */
+.project--reverse .project-media {
+  order: 2;
+}
+
+/* ─── Media + hover overlay ─────────────────────────────────── */
+/* The violet halo is what lifts the image off the panel — it's the focal
+   point of each row, so it's present at rest, not only on hover. */
+.project-media {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 24px rgba(124, 111, 247, 0.35),
+    0 0 48px rgba(124, 111, 247, 0.15);
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-media:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 111, 247, 0.5);
+  box-shadow:
+    0 0 32px rgba(124, 111, 247, 0.5),
+    0 16px 56px rgba(124, 111, 247, 0.22);
+}
+
+/* Overlay fades in on image hover (desktop) */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 14, 29, 0.55);
+  opacity: 0;
+  transition: opacity var(--ease);
+}
+
+.project-media:hover .project-overlay {
+  opacity: 1;
+}
+
+.overlay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #0a0918;
+  background: var(--accent);
+  transition: transform var(--ease);
+}
+
+.overlay-btn:hover {
+  transform: scale(1.1);
+}
+
+.overlay-btn.disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+}
+
+/* ─── Content ───────────────────────────────────────────────── */
+.project-kicker {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.project-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+}
+
+.project-desc {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+
+/* ─── Tags ──────────────────────────────────────────────────── */
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ─── Tier 2 intro ──────────────────────────────────────────── */
+.tier2-intro {
+  text-align: center;
+  margin: 5rem 0 2.5rem;
+}
+
+.tier2-heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+/* ─── Tier 2 grid ───────────────────────────────────────────────
+   Two equal columns on desktop, collapsing to one on narrow screens.
+   Equal-width tracks keep the cards aligned regardless of copy length. */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 880px;   /* narrower than Tier 1 — shorter copy needs less width */
+  margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Touch devices: no hover, so keep the GitHub button reachable ──
+   Show the overlay button always, tucked into the corner of the image. */
+@media (hover: none) {
+  .project-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(16, 14, 29, 0.75), transparent 55%);
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0.9rem;
+  }
+  .overlay-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .project,
+  .project--reverse {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.1rem;
+    border-radius: 18px;
+  }
+  /* Always show image first when stacked, regardless of reverse */
+  .project--reverse .project-media {
+    order: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .project,
+  .project--reverse {
+    padding: 0.85rem;
+    border-radius: 16px;
+  }
+}

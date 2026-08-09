@@ -1,0 +1,386 @@
+/* ─── About ───────────────────────────────────────────────────
+   Two columns: content (left) + sticky portrait with a floating
+   fact card (right). Stacks to one column (photo on top) below 900px.
+
+   Two things in here are load-bearing and easy to break:
+     1. `.about-photo` is position:sticky and is the containing block for
+        the floating card. Adding overflow:hidden to it (or to .about-inner)
+        clips the card AND silently kills the sticky behaviour.
+     2. A transform on .about-inner would make it a containing block and
+        break the sticky child. Keep transforms on the children.
+   ───────────────────────────────────────────────────────────── */
+
+.about-inner {
+  display: flex;
+  gap: 4.5rem;
+  align-items: flex-start;
+}
+
+/* ─── Left column ───────────────────────────────────────────── */
+.about-text {
+  flex: 1 1 55%;
+  min-width: 0;   /* lets long honour rows wrap instead of forcing overflow */
+}
+
+.about-headline {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 1.6rem;
+}
+
+/* Lead paragraph with a teal→violet rule down its left edge. */
+.about-lead {
+  position: relative;
+  max-width: 430px;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.about-lead::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+}
+
+/* ─── Stat cards ────────────────────────────────────────────────
+   `--tint` is set per-card inline (see data/about.js) as an "r, g, b"
+   triplet so it can be used inside rgba(). */
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.about-stat {
+  flex: 1 1 140px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(20, 17, 38, 0.55);
+  transition: border-color var(--ease), transform var(--ease);
+}
+
+.about-stat--wide {
+  flex: 1.5 1 210px;   /* room for both employer names */
+}
+
+.about-stat:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--tint), 0.4);
+}
+
+.about-stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: rgb(var(--tint));
+  background: rgba(var(--tint), 0.12);
+  border: 1px solid rgba(var(--tint), 0.22);
+}
+
+.about-stat-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.about-stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.about-stat-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.about-stat-detail {
+  font-size: 0.68rem;
+  color: var(--muted);
+  opacity: 0.75;
+  margin-top: 0.15rem;
+}
+
+/* ─── Labelled blocks ───────────────────────────────────────── */
+.about-block {
+  margin-top: 1.75rem;
+}
+
+.about-block-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+}
+
+.about-block-label::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ─── Honours list ──────────────────────────────────────────── */
+.about-honors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  list-style: none;
+}
+
+.about-honors li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  line-height: 1.65;   /* generous — the clubs row wraps to two lines */
+  color: var(--text);
+}
+
+.about-honors i {
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+  width: 1rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* Vary the icon colour so the rows don't read as one grey block. */
+.about-honors li:nth-child(2) i { color: var(--accent-2); }
+.about-honors li:nth-child(3) i { color: #e860a8; }
+.about-honors li:nth-child(4) i { color: #56a0f5; }
+
+/* ─── Interest pills ────────────────────────────────────────── */
+.about-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.about-interests li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(var(--tint), 0.08);
+  border: 1px solid rgba(var(--tint), 0.35);
+  transition: background var(--ease), transform var(--ease);
+}
+
+.about-interests li:hover {
+  background: rgba(var(--tint), 0.16);
+  transform: translateY(-2px);
+}
+
+.about-interests i {
+  color: rgb(var(--tint));
+  font-size: 0.85rem;
+}
+
+/* ─── Right column: portrait ────────────────────────────────────
+   position:relative is what anchors the floating card and sparkle.
+   Do NOT add overflow:hidden here — see the header comment. */
+.about-photo {
+  position: sticky;
+  top: 96px;              /* clears the fixed 72px nav */
+  flex: 0 0 360px;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  padding: 4px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 55%, #e860a8 100%);
+  box-shadow:
+    0 0 40px rgba(124, 111, 247, 0.28),
+    0 18px 50px rgba(0, 0, 0, 0.5);
+}
+
+.about-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 18%;   /* keeps the face centred on a very tall source */
+  border-radius: 20px;
+}
+
+/* ─── Floating fact card ────────────────────────────────────── */
+.about-photo-card {
+  position: absolute;
+  left: -2rem;
+  bottom: 2rem;
+  width: 15.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(16, 14, 29, 0.82);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+
+.about-photo-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.about-photo-fact > i {
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+  width: 1rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.about-photo-fact > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.about-photo-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.about-photo-detail {
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 1.45;
+  margin-top: 0.1rem;
+}
+
+.about-photo-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.4rem;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(45, 226, 182, 0.18);
+}
+
+/* ─── Decorative sparkle ────────────────────────────────────── */
+.about-sparkle {
+  position: absolute;
+  right: -1.25rem;
+  bottom: 3.5rem;
+  width: 42px;
+  height: 42px;
+  fill: rgba(190, 185, 225, 0.55);
+  pointer-events: none;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────
+   Below 900px the columns stack (photo first). The floating card must
+   return to normal flow here: its -2rem offset would push past the
+   viewport edge, and body{overflow-x:hidden} in App.css would hide the
+   resulting overflow rather than fix it — invisible on desktop, real on
+   a phone. */
+@media (max-width: 900px) {
+  .about-inner {
+    flex-direction: column-reverse;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .about-text {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .about-photo {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .about-photo-card {
+    position: static;
+    width: 100%;
+    margin-top: 0.9rem;
+  }
+
+  .about-sparkle {
+    display: none;
+  }
+
+  .about-lead {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-stat {
+    flex: 1 1 100%;
+  }
+}
+
+/* ─── Entrance motion ───────────────────────────────────────────
+   Matches the heroFadeUp / contactFadeUp convention used elsewhere.
+   Suppressed entirely under reduced-motion, as the rest of the site does. */
+@media (prefers-reduced-motion: no-preference) {
+  .about-text > *,
+  .about-photo {
+    animation: aboutFadeUp 0.6s ease both;
+  }
+
+  .about-headline { animation-delay: 0.05s; }
+  .about-lead     { animation-delay: 0.1s;  }
+  .about-stats    { animation-delay: 0.15s; }
+  .about-block    { animation-delay: 0.2s;  }
+  .about-photo    { animation-delay: 0.1s;  }
+}
+
+@keyframes aboutFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,32 @@
+node_modules
+dist
+.DS_Store
+
+# Secrets. `.env` alone matches only that exact name, and `.env*.local` misses
+# `.env.production` / `.env.development` — so ignore the whole family and
+# re-allow a committed example file if one is ever added.
+.env
+.env.*
+!.env.example
+.vercel
+
+# Personal documents. This repo is PUBLIC — anything committed here is
+# permanent and survives deletion via git history, forks, and clones.
+# The transcript carries a student ID and full grade history; it is deliberately
+# kept out of both git and public/ (which Vercel serves to the world).
+/images/Minas_Transcript.pdf
+
+# Loose PDFs dropped in the repo root (old resume drafts, etc.). The resume the
+# site actually serves lives at public/images/Minas_Resume.pdf and is committed
+# normally — this rule is root-only and does not touch it.
+/*.pdf
+
+# Leftovers from the pre-React static site. Superseded by public/ and src/.
+# Files here that exist nowhere else were copied into source-assets/ (which IS
+# committed) before this rule was added — don't delete images/ expecting a
+# backup, check source-assets/ first.
+#
+# The leading slash is load-bearing: a bare `images/` matches a directory of
+# that name at ANY depth, which would also exclude public/images/ and ship a
+# site with every screenshot, the portrait, and the resume missing.
+/images/

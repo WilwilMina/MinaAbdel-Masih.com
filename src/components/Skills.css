@@ -1,0 +1,109 @@
+/* ─── Skills ──────────────────────────────────────────────────
+   Centered layout, three categories. Pills use --surface with a
+   faint border + teal icon; border brightens and pill lifts on hover.
+   Each category label has a thin divider line beneath it.
+   Cert cards are wider and heavier than the pills.
+   ───────────────────────────────────────────────────────────── */
+
+#skills {
+  /* Clear section — the starfield shows through fully here, alternating
+     with the frosted About/Projects panels above and below. */
+  background: transparent;
+}
+
+.skills-inner {
+  text-align: center;
+}
+
+.skills-subtitle {
+  max-width: 520px;
+  margin: 0.5rem auto 2.5rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* ─── Category group ────────────────────────────────────────── */
+.skills-category {
+  margin-top: 3rem;
+}
+
+.skills-category-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+  /* Thin divider under each label */
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Pills ─────────────────────────────────────────────────── */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+
+.skill-pill i {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.skill-pill:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(45, 226, 182, 0.12);
+}
+
+/* ─── Certification cards ───────────────────────────────────── */
+.cert-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: left;
+  max-width: 360px;
+  padding: 1.1rem 1.4rem;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color var(--ease), transform var(--ease);
+}
+
+.cert-card i {
+  color: var(--accent-2);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.cert-card:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-3px);
+}
