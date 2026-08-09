@@ -10,6 +10,8 @@ export const bio = {
   minor: 'Mathematics',
   gpa: '4.0 / 4.0',
   standing: 'Ranked #1 in his Computer Science class',
+  graduation: 'May 2028',
+  location: 'Raleigh, NC',
   seeking: 'Summer 2027 software engineering internships',
   interests:
     'Full-stack development, applied AI, and building products that solve real problems.',
@@ -19,9 +21,34 @@ export const bio = {
   site: 'https://MinaAbdel-Masih.com',
 }
 
-/* Things the assistant gets asked that aren't project or skill facts. */
+/* Work history, most relevant first. Structured rather than prose so the
+   assistant can cite one specific accomplishment instead of quoting a
+   paragraph. This is the evidence it reaches for on "why should we hire him"
+   questions, so entries describe what was built or done — not adjectives.
+   `duration` is optional; omit it rather than guess. */
+export const experience = [
+  {
+    role: 'Automation Developer Intern',
+    org: 'Zaki Technology',
+    work: [
+      'Built an AI-driven workflow with N8N and the Gemini API that automated a manual data-entry process previously taking 2-3 hours a day.',
+      'Designed a human-in-the-loop email classification and review system, so a person still approves what the automation proposes.',
+    ],
+  },
+  {
+    role: 'Pharmacy Customer Service Associate',
+    org: 'Walgreens',
+    duration: '4 years',
+    work: [
+      'Handled a high-pressure customer-facing pharmacy counter; the source of his composure and communication under pressure.',
+      'Top regional performer for credit card enrollments; Employee of the Month multiple times.',
+    ],
+  },
+]
+
+/* Things the assistant gets asked that aren't project, skill, or job facts. */
 export const notes = [
   'Mina built this portfolio himself with React and Vite, designing the layout and animations. He used AI tools to move faster and polish details, and sees AI as a way to push good projects further.',
-  'Some projects are university coursework, so their source code is private and available on request rather than on GitHub. The Access Control Compliance Engine and ugrep are both in that category.',
-  'The best way to reach Mina is the contact form on this site, or email at minarouma@gmail.com.', 'Mina worked as a Pharmacy Customer Service Associate at Walgreens for four years, which taught him to work under pressure and strengthened his communication and customer-facing skills. He was recognized as one of the top performers in his region for credit card enrollments and was named Employee of the Month multiple times.', 'Mina interned as an Automation Developer at Zaki Technology, building an AI-driven workflow with N8N and the Gemini API to automate a manual data-entry process that had taken 2-3 hours a day, including a human-in-the-loop email classification and review system.',
+  'Some university coursework has private source, available on request rather than on GitHub — the Access Control Compliance Engine and ugrep are both in that category.',
+  'Best way to reach him: the contact form on this site, or minarouma@gmail.com.',
 ]
