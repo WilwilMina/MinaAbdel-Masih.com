@@ -17,7 +17,7 @@ import './ChatWidget.css'
 const RESPONSES = {
   who: "Mina is a Computer Science student at NC State (AI Concentration, Math Minor) with a 4.0/4.0 GPA, ranked #1 in his Computer Science class. He builds full-stack systems and AI applications — from Java compliance engines to Spring Boot + React apps to agentic AI backends.",
   projects: "A few highlights: an Access Control Compliance Engine in Java that parses 262,000+ records; a full-stack Student Productivity Tool with a Spring Boot backend and React frontend; and Rooted, an agentic AI journaling app where Mina was the AI/ML lead at the IBM × NCCU Hackathon.",
-  opportunities: "Mina is seeking Summer 2027 software engineering internships — especially roles involving full-stack development, AI, and building products that solve real problems.",
+  opportunities: "Mina is seeking Summer 2027 internships in Software Engineering and Data Science — especially roles involving full-stack development, AI, and building products that solve real problems.",
   website: "Yes! Mina built this site with React and Vite, designing the layout and animations himself. He used AI tools to move faster and polish the details — he sees AI as a way to push good projects further.",
 }
 
