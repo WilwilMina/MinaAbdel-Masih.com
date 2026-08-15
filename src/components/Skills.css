@@ -73,11 +73,19 @@
   box-shadow: 0 8px 20px rgba(45, 226, 182, 0.12);
 }
 
-/* ─── Certification cards ───────────────────────────────────── */
+/* ─── Certification cards ───────────────────────────────────────
+   Uniform width so the row breaks are predictable rather than ragged:
+   the section is 1100px wide minus 1.5rem padding either side = 1052px,
+   so a 330px basis + 1rem gaps fits exactly three (3x330 + 2x16 = 1022)
+   and the remainder centres underneath — 5 certs lay out as 3 + 2, the
+   same centred-partial-row behaviour the ball grid uses.
+   min-height equalises the one- and two-line labels so every card in a
+   row is the same height regardless of how its text wraps. */
 .cert-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
   gap: 1rem;
 }
 
@@ -86,7 +94,9 @@
   align-items: center;
   gap: 0.9rem;
   text-align: left;
-  max-width: 360px;
+  /* Shrinks below 330px on narrow screens, never grows past it. */
+  flex: 0 1 330px;
+  min-height: 5.25rem;
   padding: 1.1rem 1.4rem;
   border-radius: 14px;
   background: var(--bg);

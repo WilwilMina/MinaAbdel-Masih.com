@@ -9,9 +9,11 @@
 
    Order matters: the ball grid fills left-to-right, 4 per row, so this list is
    grouped to keep related tech on the same row —
-     row 1  core languages          row 2  the web trio + React
-     row 3  version control + editors    row 4  tooling
-     row 5  productivity (partial row, centred) */
+     row 1  core languages               row 2  the web trio + React
+     row 3  version control + editors    row 4  APIs, testing, CI
+     row 5  automation + productivity
+   20 entries divides evenly into 5 full rows. SkillsCanvas centres a partial
+   final row, but even rows read better — keep the count a multiple of 4. */
 
 export const stack = [
   { icon: 'fa-brands fa-java',     label: 'Java',   texture: '/tech/java.png'   },
@@ -29,16 +31,23 @@ export const stack = [
   { icon: 'fa-solid fa-code',       label: 'VSCode',  texture: '/tech/vscode.png'  },
   { icon: 'fa-solid fa-circle-dot', label: 'Eclipse', texture: '/tech/eclipse.png' },
 
-  { icon: 'fa-solid fa-terminal',    label: 'Claude Code', texture: '/tech/claudecode.png' },
-  { icon: 'fa-solid fa-paper-plane', label: 'Postman',     texture: '/tech/postman.png'    },
-  { icon: 'fa-brands fa-jenkins',    label: 'Jenkins',     texture: '/tech/jenkins.png'    },
-  { icon: 'fa-solid fa-sitemap',     label: 'N8N',         texture: '/tech/n8n.png'        },
+  { icon: 'fa-solid fa-paper-plane', label: 'Postman',  texture: '/tech/postman.png' },
+  { icon: 'fa-solid fa-cloud',       label: 'REST API', texture: '/tech/restapi.png' },
+  { icon: 'fa-solid fa-vial',        label: 'JUnit',    texture: '/tech/junit.png'   },
+  { icon: 'fa-brands fa-jenkins',    label: 'Jenkins',  texture: '/tech/jenkins.png' },
 
+  { icon: 'fa-solid fa-terminal',   label: 'Claude Code',      texture: '/tech/claudecode.png'      },
+  { icon: 'fa-solid fa-sitemap',    label: 'N8N',              texture: '/tech/n8n.png'             },
   { icon: 'fa-brands fa-google',    label: 'Google Workspace', texture: '/tech/googleworkspace.png' },
   { icon: 'fa-brands fa-microsoft', label: 'Microsoft Office', texture: '/tech/office.png'          },
 ]
 
+/* All five appear on the resume. Cards are uniform width and wrap centred, so
+   the count doesn't have to divide evenly — 5 lays out as 3 + 2. */
 export const certifications = [
-  { label: 'ChatGPT Prompt Engineering for Developers'  },
-  { label: 'IBM Unleashing The Power of AI Agents'      },
+  { label: 'ChatGPT Prompt Engineering for Developers'        },
+  { label: 'IBM Unleashing The Power of AI Agents'            },
+  { label: 'IBM Generative AI Essentials'                     },
+  { label: 'IBM RAG for Enhanced AI Output'                   },
+  { label: 'Wells Fargo Software Engineering Job Simulation Certificate' },
 ]

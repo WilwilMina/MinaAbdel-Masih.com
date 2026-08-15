@@ -219,6 +219,62 @@ Preferrably the google gemini model or the cheapest model.
 
 ---
 
+## Pre-Push Checklist
+
+There is no staging gate: a push to `main` publishes to
+MinaAbdel-Masih.com in about a minute, and the repo is PUBLIC — anything
+committed survives deletion via git history, forks, and clones.
+
+Run every step below before asking to push. Report the actual results,
+not "looks fine". If any step fails, stop and fix it first.
+
+**1. Preview locally.**
+`npm run dev` → review at http://localhost:5173. The dev server also
+mounts `api/chat.js`, so the chat widget works locally with the real
+Gemini key from `.env.local`. Wait for Mina to confirm it looks right.
+
+**2. Verify asset paths.**
+`npm run check:assets` — must report all references resolving. This
+catches the case-sensitivity trap: Windows resolves
+`/images/portfolio.png` to `Portfolio.png`, Vercel's Linux filesystem
+does not. Invisible locally, a 404 in production.
+
+**3. Build.**
+`npm run build` — must succeed. Note the bundle sizes; the lazy
+`SkillsCanvas` chunk must stay code-split out of the main bundle.
+
+**4. Scan for secrets.**
+Read the values in `.env.local` and confirm each appears **0 times** in
+`dist/` and **0 times** in any git-tracked file. Confirm `.env.local` is
+still gitignored. Never print a secret value in the response — report
+only the variable name and the count.
+
+**5. Check any new image assets.**
+Textures in `public/tech/` must be **square** with **real alpha**
+(corner alpha = 0). Supplied logos routinely arrive with an opaque white
+or checkerboard background baked in, which renders as a solid tile on
+the 3D ball. Key it out and re-square before wiring it up, and confirm
+the fix by re-measuring — don't trust the source file.
+
+**6. Review the working tree.**
+`git status --untracked-files=all`. Confirm ONLY the intended files
+appear. Nothing with personal data may enter `public/` — the transcript
+carries a student ID and full grade history, and `.gitignore` only
+excludes it at the repo root, not under `public/images/`.
+
+**7. Stage explicitly.**
+`git add <specific paths>`. Never `git add -A` or `git add .`.
+
+**8. Summarize before pushing.**
+List every file, what changed in it, and what goes live. Wait for a yes.
+
+**9. Verify after pushing.**
+Fetch the live URLs and confirm the change is actually being served
+(HTTP 200, expected content). A green deploy is not proof the right
+bytes shipped.
+
+---
+
 ## Response Format
 
 For every response in this project, structure it as:
