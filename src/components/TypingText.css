@@ -1,4 +1,21 @@
 /* TypingText — the typed word + blinking cursor (CSS border-right). */
+
+/* Standard visually-hidden utility. Keeps text in the accessibility tree and
+   in the rendered DOM — so screen readers and crawlers get a stable phrase —
+   without showing it. Note these CSS files are plain global imports, so this
+   class is available site-wide, not scoped to TypingText. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .typing {
   color: var(--accent);
   border-right: 2px solid var(--accent);
