@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- One entry on purpose: the site has no router, so every section is an
+     anchor on the apex URL, not a separate page. lastmod is maintained by
+     hand — update it when content changes, or drop the line rather than let
+     it go stale. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://minaabdel-masih.com/</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+</urlset>

@@ -16,6 +16,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mina Abdel-Masih</title>
+    <!-- The apex is the real URL. All four host variants (http/https x www/apex)
+         308 to it, but without this Google has to infer that, and it was
+         reporting the www variant as "Page with redirect" / "HTTPS not
+         evaluated" while it worked that out. Those reports are expected, not
+         errors — this just settles the question outright. -->
+    <link rel="canonical" href="https://minaabdel-masih.com/" />
     <!-- Required. Without it Google builds the snippet from rendered page text
          and catches the hero typing animation frozen mid-word. -->
     <meta

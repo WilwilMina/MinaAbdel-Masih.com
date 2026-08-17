@@ -1,0 +1,7 @@
+# Nothing here is restricted; a missing robots.txt already means "crawl
+# everything". This file exists to advertise the sitemap to crawlers that
+# don't have a Search Console equivalent (Bing, DuckDuckGo).
+User-agent: *
+Allow: /
+
+Sitemap: https://minaabdel-masih.com/sitemap.xml
